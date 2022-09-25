@@ -33,7 +33,9 @@ class MainApp(MDApp):
         self.sm.current = 'user_screen'
         self.sm.transition.direction = 'left'
         print('button works!')
-        
+    
+    def on_start(self):
+        self.fps_monitor_start()        
 """
     OTAN ME TO KALO FTASOUME STO SIMEIO NA ASXOLITHOUME ME TIN ACTUAL DIADIKASIA 
 
@@ -42,8 +44,6 @@ class MainApp(MDApp):
 """
         
 
-    def on_start(self):
-        self.fps_monitor_start()
 
 if __name__ == "__main__":
 
