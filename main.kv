@@ -1,5 +1,6 @@
 #:kivy 2.1.0
-Screen:
+
+<LoginScreen>:
     login:login
     MDCard:
         size_hint: None, None
@@ -32,26 +33,7 @@ Screen:
             text: 'Submit'
             pos_hint: {'center_x': 0.5}
             font_size: 12
-            on_press: app.logger()
-        
+            on_release: 
+                app.sm.current = 'user_screen'
+                app.sm.transition.direction = 'left'
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<UserPage>:
-    MDLabel:
-        text:'SKATA'
-        font_size: 40
-        pos_hint:{'center_x': 0.5, 'center_y': 0.5}
