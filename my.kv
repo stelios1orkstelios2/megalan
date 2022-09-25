@@ -1,0 +1,57 @@
+#:kivy 2.1.0
+Screen:
+    login:login
+    MDCard:
+        size_hint: None, None
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        size: 300, 400
+        elevation: 10
+        padding: 25
+        spacing: 25
+        orientation: 'vertical'
+
+        Image:
+            source: 'logo.png'
+            pos_hint: {'center_x': 0.5}
+            size_hint: 0.75, 0.75
+            spacing_y: 10
+
+        MDTextField:
+            id:login
+            hint_text: 'Login'
+            icon_right: 'account-box'
+            size_hint_x:None
+            width: 200
+            font_size:18
+            pos_hint: {'center_x': 0.5}
+            max_text_length: 8
+            mode: 'rectangle'
+            input_type: 'number'
+        
+        MDRectangleFlatButton:
+            text: 'Submit'
+            pos_hint: {'center_x': 0.5}
+            font_size: 12
+            on_press: app.logger()
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<UserPage>:
+    MDLabel:
+        text:'SKATA'
+        font_size: 40
+        pos_hint:{'center_x': 0.5, 'center_y': 0.5}
