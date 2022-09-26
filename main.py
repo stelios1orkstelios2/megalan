@@ -14,6 +14,8 @@ from database import MyDB
 Window.size = (300, 500)
 
 #Database handling class created by yours beautifully. More methods to come soon :(
+global mydb
+
 mydb = MyDB()
 
 """
@@ -29,11 +31,11 @@ class MainApp(MDApp):
         
         self.theme_cls.theme_style = 'Dark'
         self.theme_cls.primary_palette = 'BlueGray'
-        
+        self.theme_cls.primary_color
         self.sm = ScreenManager()
         self.sm.add_widget(Builder.load_file('splashart.kv'))
         self.sm.add_widget(Builder.load_file('user.kv'))
-        self.sm.add_widget(Builder.load_file('main.kv'))
+        self.sm.add_widget(Builder.load_file('login.kv'))
         """
         FOR MENU IN TOPAPPBAR OF USERSCREEN
         menu_items = [
