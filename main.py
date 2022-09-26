@@ -1,27 +1,20 @@
 from kivymd.app import MDApp
 from kivy.lang import Builder
-from kivy.uix.screenmanager import ScreenManager, Screen
-from kivymd.uix.menu import MDDropdownMenu
+from kivy.uix.screenmanager import ScreenManager
 from kivy.metrics import dp
 from kivy.core.window import Window
 from kivy.clock import Clock
-import mysql.connector
+from database import MyDB
 
-
-mydb = mysql.connector.connect(
-    host="localhost",
-    user='root',
-    password="B202d6178",
-    database='users'
-)
-cur = mydb.cursor()
-
+"""
+    Gia to kalo tou sanity mou kalo tha itan na dimiourgisw allo python arxeio to opoio tha diaxeirizete to mysql,
+    giati an to kanw auto edw tha mou gamithei i logiki poli asxima :D
+"""
 
 Window.size = (300, 500)
 
-
-#class SplashScreen(Screen):
-#    pass
+#Database handling class created by yours beautifully. More methods to come soon :(
+mydb = MyDB()
 
 """
     TODO LIST        
