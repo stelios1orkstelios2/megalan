@@ -1,6 +1,7 @@
 #:kivy 2.1.0
 
-<LoginScreen>:
+MDScreen:
+    name:'loginpage'
     login:login
     MDCard:
         size_hint: None, None
@@ -33,7 +34,5 @@
             text: 'Submit'
             pos_hint: {'center_x': 0.5}
             font_size: 12
-            on_release: 
-                app.sm.current = 'user_screen'
-                app.sm.transition.direction = 'left'
+            on_release: app.change_screen('user_screen', 'left')
 

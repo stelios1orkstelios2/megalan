@@ -1,14 +1,20 @@
 #:kivy 2.1.0
 
-<UserScreen>:
+MDScreen:
+    name:"user_screen"
+    username_topappbar:username_topappbar
+    md_background_color: '#212121'
     MDBoxLayout:
         orientation: "vertical"
-
+        
         MDTopAppBar:
-            title: "MegaLan"
-            left_action_items: [["menu", lambda x: app.callback(x), "Menu"]]
+            id: username_topappbar
+            title: ""
+            right_action_items: [["logout", lambda x: app.logout_button(x), "Log Out"]]
             elevation: 10
+            md_bg_color: "#212121"
 
         MDLabel:
             text: "Content"
             halign: "center"
+#["menu", lambda x: app.callback(x), "Menu"]
