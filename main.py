@@ -1,8 +1,12 @@
+from cgitb import text
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivymd.uix.screenmanager import MDScreenManager
 from kivymd.uix.screen import MDScreen
+from kivymd.uix.menu import MDDropdownMenu
+from kivy.metrics import dp
+from kivymd.uix.snackbar import Snackbar
 
 class UserScreen(Screen):
     pass # Den exw idea pws ston poutso na to ftiaksw auto akoma 
@@ -26,7 +30,15 @@ class MainApp(MDApp):
         self.sm.add_widget(UserScreen(name='user_screen'))
         self.sm.add_widget(LoginScreen(name='loginpage'))
         self.sm.current = 'loginpage'
-
+        menu_items = [
+                    {
+                        "viewclass": "OneLineListItem",
+                        "text": "Log Out",
+                        "height": dp(56),
+                        "on_release": lambda x="": self.menu_callback(x),
+                    } 
+                ]
+        self.menu = MDDropdownMenu(items=menu_items, position="bottom", width_mult=4, ver_growth='down', hor_growth="right")
         return self.sm
     
     def change_screen(self):
@@ -34,6 +46,14 @@ class MainApp(MDApp):
         self.sm.transition.direction = 'left'
         print('button works!')
     
+    def callback(self, button):
+        self.menu.caller = button
+        self.menu.open()
+    
+    def menu_callback(self, text_item):
+        self.sm.current = 'loginpage'
+        self.menu.dismiss()
+        
     def on_start(self):
         self.fps_monitor_start()        
 """
