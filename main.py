@@ -54,9 +54,10 @@ class MainApp(MDApp):
     def logger(self):
         password = self.sm.get_screen('loginpage').ids.login.text
         mydb.cur.execute(f"SELECT * FROM customers WHERE password='{password}'")
-        res = mydb.cur.fetchall()
-        print(res)
-        if len(res) == 0:
+        self.res = mydb.cur.fetchall()
+        user_info = self.sm.get_screen('user_screen').ids
+        print(self.res)
+        if len(self.res) == 0:
             #This should make a popup where it informs the user that the password was wrong
             button = MDRectangleFlatButton(text="CLOSE", on_release=lambda x: self.close_dialog(x))
             self.dialog = MDDialog(title="ERROR!", type="alert", text="Password is incorrect or the user does not exist!", buttons=[button], size_hint=(0.7, None))
@@ -64,7 +65,10 @@ class MainApp(MDApp):
             
         else:
             self.change_screen('user_screen', 'left')
-            self.sm.get_screen('user_screen').ids.username_topappbar.title = f"Hi, {res[0][0]}" # This is used to grab the input provided by the user and set it as a title in the MDTopAppBar of the UserScreen. This should be used as a way to access the name of a customer and set as greeting in the title of their personal user page
+            user_info.balance.text = f"Balance: {self.res[0][3]}"
+            user_info.address.text = f"Address: {self.res[0][1]}"
+            user_info.internet_speed.text = f"Internet Speed: {self.res[0][4]}"
+            user_info.user_name.title = f"Hi, {self.res[0][0]}" # This is used to grab the input provided by the user and set it as a title in the MDTopAppBar of the UserScreen. This should be used as a way to access the name of a customer and set as greeting in the title of their personal user page
 
     def close_dialog(self, obj):
         self.dialog.dismiss()            
