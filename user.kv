@@ -3,18 +3,7 @@
 MDScreen:
     name:"user_screen"
     username_topappbar:username_topappbar
-    MDBoxLayout:
-        orientation: "vertical"
-        
-        MDTopAppBar:
-            id: username_topappbar
-            title: ""
-            right_action_items: [["logout", lambda x: app.logout_button(x), "Log Out"]]
-            elevation: 10
-            md_bg_color: "#212121"
-            
 
-        MDLabel:
-            text: "Content"
-            halign: "center"
-#["menu", lambda x: app.callback(x), "Menu"]
+    MDGridLayout:
+        size: self.size
+        id: username_topappbar
