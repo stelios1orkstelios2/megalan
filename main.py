@@ -8,7 +8,7 @@ from kivy.clock import Clock
 from database import MyDB
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.button import MDRectangleFlatButton
-from kivymd.uix.menu import MDDropdownMenu
+
 """
     Gia to kalo tou sanity mou kalo tha itan na dimiourgisw allo python arxeio to opoio tha diaxeirizete to mysql,
     giati an to kanw auto edw tha mou gamithei i logiki poli asxima :D
@@ -69,6 +69,7 @@ class MainApp(MDApp):
             user_info.address.text = f"Address: {self.res[0][1]}"
             user_info.internet_speed.text = f"Internet Speed: {self.res[0][4]}"
             user_info.user_name.title = f"Hi, {self.res[0][0]}" # This is used to grab the input provided by the user and set it as a title in the MDTopAppBar of the UserScreen. This should be used as a way to access the name of a customer and set as greeting in the title of their personal user page
+
 
     def close_dialog(self, obj):
         self.dialog.dismiss()            
