@@ -1,4 +1,3 @@
-
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager
@@ -8,7 +7,7 @@ from kivy.clock import Clock
 from database import MyDB
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.button import MDRectangleFlatButton
-
+from kivymd.uix.widget import MDWidget
 """
     Gia to kalo tou sanity mou kalo tha itan na dimiourgisw allo python arxeio to opoio tha diaxeirizete to mysql,
     giati an to kanw auto edw tha mou gamithei i logiki poli asxima :D
@@ -36,19 +35,17 @@ mydb = MyDB()
             md_bg_color: 0.10980392156862745,0.10196078431372549,0.10980392156862745, 1
 
 """
+class InformationWidget(MDWidget):
+    pass
 
 class MainApp(MDApp):
     def build(self):
         self.theme_cls.theme_style = 'Dark'
         self.theme_cls.primary_palette = 'BlueGray'
-        
         self.sm = ScreenManager()
         self.sm.add_widget(Builder.load_file('splashart.kv'))
         self.sm.add_widget(Builder.load_file('user.kv'))
-        self.sm.add_widget(Builder.load_file('login.kv'))
-        
-        
-        
+        self.sm.add_widget(Builder.load_file('login.kv')) 
         return self.sm
     
     def logger(self):
@@ -60,7 +57,13 @@ class MainApp(MDApp):
         if len(self.res) == 0:
             #This should make a popup where it informs the user that the password was wrong
             button = MDRectangleFlatButton(text="CLOSE", on_release=lambda x: self.close_dialog(x))
-            self.dialog = MDDialog(title="ERROR!", type="alert", text="Password is incorrect or the user does not exist!", buttons=[button], size_hint=(0.7, None))
+            self.dialog = MDDialog(
+                title="ERROR!", 
+                type="alert", 
+                text="Password is incorrect or the user does not exist!", 
+                buttons=[button], 
+                size_hint=(0.7, None)
+            )
             self.dialog.open()
             
         else:
@@ -78,8 +81,8 @@ class MainApp(MDApp):
         
         self.sm.current = screen_choice
         self.sm.transition.direction = direction_choice
-        print('button works!') # Used for debuggin purposes 
-    
+        print('button works!') 
+
     def splash_screen_start(self, *args):
         self.sm.current = 'loginpage'
 

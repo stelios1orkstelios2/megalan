@@ -1,7 +1,12 @@
 #:kivy 2.1.0
 # import get_color_from_hex kivy.utils
+
 <MDLabel>:
     halign:'center'
+
+<InformationWidget>:
+    Label:
+        text:"SKATA"
 MDScreen:
     name:"user_screen"
     address:address
@@ -9,7 +14,6 @@ MDScreen:
     internet_speed:internet_speed
     user_name:user_name
     MDBoxLayout:
-        pos_hint: {"top": 1}
         orientation: 'vertical'
         MDTopAppBar:
             id:user_name
@@ -17,7 +21,6 @@ MDScreen:
             right_action_items: [['logout', lambda x: app.change_screen('loginpage', 'right'), 'Log Out']]
             md_bg_color: get_color_from_hex('#0F0F0F')
             pos_hint: {"top": 1}
-
         OneLineIconListItem:
             id:internet_speed
             text: ""
